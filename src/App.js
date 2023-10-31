@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import Navbar from "./component/Navbar";
+import Textbox from "./component/Textbox";
 
 function App() {
+  const [mode, setmode] = useState("light");
+  const [texts, setTexts] = useState("E.D.M");
+  const toogleMode = () => {
+    if (mode === "dark") {
+      setmode("light");
+      setTexts("E.D.M");
+      document.body.style.backgroundColor = "#d3d9df";
+    } else {
+      setmode("dark");
+      setTexts("D.D.M");
+      document.body.style.backgroundColor = "#171b1f";
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar
+        home="Home"
+        about="About"
+        title="Text"
+        texts={texts}
+        mode={mode}
+        toogleMode={toogleMode}
+      />
+      <Textbox mode={mode} />
+    </>
   );
 }
 
