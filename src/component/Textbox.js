@@ -7,6 +7,11 @@ export default function Textbox(props){
       let newText = text.toUpperCase();
       setText(newText);
   }
+  const handler = ()=>{
+    let newText = text.toLowerCase();
+    setText(newText);
+}
+
   const Clear = ()=>{
     let blueText = '';
     setText(blueText);
@@ -26,6 +31,10 @@ export default function Textbox(props){
   }
   const Lochar = () => {
     const words = text.split(" ").map((word)=> word.charAt(0).toLowerCase()+ word.slice(1));
+    setText(words.join(" "));
+  }
+  const Lschar = () => {
+    const  words = text.split(" ").map((word)=> word.charAt(0).toUpperCase()+ word.slice(1).toLowerCase());
     setText(words.join(" "));
   }
   const handlechange = (event)=>{
@@ -50,12 +59,14 @@ export default function Textbox(props){
       <p className="my-2">{text.split(" ").filter(space => space.length!==0).length} words and {text.split('').filter(char => char !== ' ').length} character <br/>{Time()}</p>
     </div>
 
-  <button className={`btn btn-${props.mode}`} onClick={handle}>C.T.U</button>
-  <button className={`btn btn-${props.mode} mx-1 my-2`}  onClick={Clear}>Clear</button>
-  <button className={`btn btn-${props.mode} mx-1 my-2`}  onClick={Space}>Space</button>
-  <button className={`btn btn-${props.mode} mx-1 my-2`}  onClick={fchar} >G.F.C</button>
-  <button className={`btn btn-${props.mode} mx-1 my-2`}  onClick={Upchar} >C.1st.C.O.E.Ws</button>
-  <button className={`btn btn-${props.mode} mx-1 my-2`}  onClick={Lochar} >LC.1st.C.O.E.Ws</button>
+  <button className={`btn btn-${props.mode} mx-1 my-1`} onClick={handle}>Convert to uppercase</button><br />
+  <button className={`btn btn-${props.mode} mx-1 my-1`} onClick={handler}>Convert to lowerCase</button><br />
+  <button className={`btn btn-${props.mode} mx-1 my-1`}  onClick={Space}>manage multiple Space</button><br />
+  <button className={`btn btn-${props.mode} mx-1 my-1`}  onClick={fchar} >Get first character</button><br />
+  <button className={`btn btn-${props.mode} mx-1 my-1`}  onClick={Upchar} >Convert 1st character to uppercase</button><br />
+  <button className={`btn btn-${props.mode} mx-1 my-1`}  onClick={Lochar} >Convert 1st character to lowercase</button><br />
+  <button className={`btn btn-${props.mode} mx-1 my-1`}  onClick={Lschar} >lowercase all character except 1st character</button><br />
+  <button className={`btn btn-${props.mode} mx-1 my-1`}  onClick={Clear}>Clear</button><br />
 
  </div>
 
