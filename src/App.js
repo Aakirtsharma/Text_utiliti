@@ -19,14 +19,7 @@ function App() {
   };
   return (
     <>
-      <Navbar
-        home="Home"
-        about="About"
-        title="Text"
-        texts={texts}
-        mode={mode}
-        toogleMode={toogleMode}
-      />
+      <Navbar title="Text" texts={texts} mode={mode} toogleMode={toogleMode} />
       <Textbox mode={mode} />
     </>
   );
